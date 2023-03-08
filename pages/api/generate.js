@@ -3,6 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
+const openai = new OpenAIApi(configuration);
 
 export default async function(req, res){
     if(!configuration.apiKey) {
@@ -49,12 +50,12 @@ export default async function(req, res){
 function generatePrompt(animal){
     const capitalizedAnimal = 
         animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-        return `Suggest three names for an animal that is a superhero.
+        return `Suggest three names for an animal that belongs to a superhero.
 
     Animal: Cat
-    Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
+    Names: Sharpclaw, Mr. Whiskers, Valerie
     Animal: Dog
-    Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
+    Names: Bruno, Wonder Canine, Sir Barks-a-Lot
     Animal: ${capitalizedAnimal}
     Names:`;
 }
