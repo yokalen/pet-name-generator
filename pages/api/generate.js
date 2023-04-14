@@ -34,7 +34,6 @@ export default async function(req, res){
             top_p: 1,
             best_of: 4,
             frequency_penalty: 2,
-            presence_penalty: 0,
         });
         res.status(200).json({ result: completion.data.choices[0].text });
     } catch (error) {
@@ -55,12 +54,12 @@ export default async function(req, res){
 function generatePrompt(animal){
     const capitalizedAnimal = 
         animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-        return `Suggest three names for an animal that belongs to a superhero.
+        return `Suggest three names for an animal that sound like a main character of a movie.
 
     Animal: Cat
-    Names: Sharpclaw, Mr. Whiskers, Valerie
+    Names: Sharpie, Whiskers, Valentine
     Animal: Dog
-    Names: Bruno, Wonder Canine, Sir Barks-a-Lot
+    Names: Bruno, Scooby, Bob
     Animal: ${capitalizedAnimal}
     Names:`;
 }
